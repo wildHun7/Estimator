@@ -49,8 +49,8 @@ namespace Sections
             throw std::runtime_error("Section is empty");
 
         int total = 0;
-        for(const auto& [_itemPtr, count] : m_sectionItems){
-            total += _itemPtr->calcCosts() * count;
+        for(const auto& [_itemPtr, _count] : m_sectionItems){
+            total += _itemPtr->calcCosts() * _count;
         }
         return total;
     }

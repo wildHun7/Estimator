@@ -1,4 +1,4 @@
-#include "sectiontype1.h"
+#include "section_type1.h"
 
 namespace Sections
 {

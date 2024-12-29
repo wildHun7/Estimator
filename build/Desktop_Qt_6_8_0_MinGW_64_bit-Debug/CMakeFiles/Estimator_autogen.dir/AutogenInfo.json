@@ -266,21 +266,27 @@
 	"HEADERS" : 
 	[
 		[
+			"C:/Users/lucas/source/repos/Estimator/Estimator/gui/section_table_model.h",
+			"MU",
+			"DMHXEJ42XS/moc_section_table_model.cpp",
+			null
+		],
+		[
 			"C:/Users/lucas/source/repos/Estimator/Estimator/items/item.h",
 			"MU",
 			"HU7TA6T7T7/moc_item.cpp",
 			null
 		],
 		[
-			"C:/Users/lucas/source/repos/Estimator/Estimator/items/itemtype1.h",
+			"C:/Users/lucas/source/repos/Estimator/Estimator/items/item_type1.h",
 			"MU",
-			"HU7TA6T7T7/moc_itemtype1.cpp",
+			"HU7TA6T7T7/moc_item_type1.cpp",
 			null
 		],
 		[
-			"C:/Users/lucas/source/repos/Estimator/Estimator/items/itemtype2.h",
+			"C:/Users/lucas/source/repos/Estimator/Estimator/items/item_type2.h",
 			"MU",
-			"HU7TA6T7T7/moc_itemtype2.cpp",
+			"HU7TA6T7T7/moc_item_type2.cpp",
 			null
 		],
 		[
@@ -290,9 +296,9 @@
 			null
 		],
 		[
-			"C:/Users/lucas/source/repos/Estimator/Estimator/manager/sectionmanager.h",
+			"C:/Users/lucas/source/repos/Estimator/Estimator/manager/section_manager.h",
 			"MU",
-			"7P4I4GMEXJ/moc_sectionmanager.cpp",
+			"7P4I4GMEXJ/moc_section_manager.cpp",
 			null
 		],
 		[
@@ -302,15 +308,15 @@
 			null
 		],
 		[
-			"C:/Users/lucas/source/repos/Estimator/Estimator/sections/sectiontype1.h",
+			"C:/Users/lucas/source/repos/Estimator/Estimator/sections/section_type1.h",
 			"MU",
-			"XR2OTHVNA5/moc_sectiontype1.cpp",
+			"XR2OTHVNA5/moc_section_type1.cpp",
 			null
 		],
 		[
-			"C:/Users/lucas/source/repos/Estimator/Estimator/sections/sectiontype2.h",
+			"C:/Users/lucas/source/repos/Estimator/Estimator/sections/section_type2.h",
 			"MU",
-			"XR2OTHVNA5/moc_sectiontype2.cpp",
+			"XR2OTHVNA5/moc_section_type2.cpp",
 			null
 		]
 	],
@@ -344,6 +350,7 @@
 		"C:/Users/lucas/source/repos/Estimator/Estimator/items",
 		"C:/Users/lucas/source/repos/Estimator/Estimator/sections",
 		"C:/Users/lucas/source/repos/Estimator/Estimator/manager",
+		"C:/Users/lucas/source/repos/Estimator/Estimator/gui",
 		"C:/Qt/6.8.0/mingw_64/include/QtCore",
 		"C:/Qt/6.8.0/mingw_64/include",
 		"C:/Qt/6.8.0/mingw_64/mkspecs/win32-g++",
@@ -390,17 +397,22 @@
 	"SOURCES" : 
 	[
 		[
+			"C:/Users/lucas/source/repos/Estimator/Estimator/gui/section_table_model.cpp",
+			"MU",
+			null
+		],
+		[
 			"C:/Users/lucas/source/repos/Estimator/Estimator/items/item.cpp",
 			"MU",
 			null
 		],
 		[
-			"C:/Users/lucas/source/repos/Estimator/Estimator/items/itemtype1.cpp",
+			"C:/Users/lucas/source/repos/Estimator/Estimator/items/item_type1.cpp",
 			"MU",
 			null
 		],
 		[
-			"C:/Users/lucas/source/repos/Estimator/Estimator/items/itemtype2.cpp",
+			"C:/Users/lucas/source/repos/Estimator/Estimator/items/item_type2.cpp",
 			"MU",
 			null
 		],
@@ -415,7 +427,7 @@
 			null
 		],
 		[
-			"C:/Users/lucas/source/repos/Estimator/Estimator/manager/sectionmanager.cpp",
+			"C:/Users/lucas/source/repos/Estimator/Estimator/manager/section_manager.cpp",
 			"MU",
 			null
 		],
@@ -425,12 +437,12 @@
 			null
 		],
 		[
-			"C:/Users/lucas/source/repos/Estimator/Estimator/sections/sectiontype1.cpp",
+			"C:/Users/lucas/source/repos/Estimator/Estimator/sections/section_type1.cpp",
 			"MU",
 			null
 		],
 		[
-			"C:/Users/lucas/source/repos/Estimator/Estimator/sections/sectiontype2.cpp",
+			"C:/Users/lucas/source/repos/Estimator/Estimator/sections/section_type2.cpp",
 			"MU",
 			null
 		]

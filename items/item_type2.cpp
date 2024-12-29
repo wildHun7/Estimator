@@ -1,4 +1,4 @@
-#include "itemtype2.h"
+#include "item_type2.h"
 
 namespace Items {
 

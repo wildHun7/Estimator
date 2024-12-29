@@ -1,7 +1,14 @@
-#include "sectionmanager.h"
+#include "section_manager.h"
 
 namespace Manager
 {
+    const std::vector<std::unique_ptr<Sections::Section>>& SectionManager::getSections() const
+    {
+        return m_sectionList;
+    }
+
+    /// Managing sections
+
     void SectionManager::addSection(std::unique_ptr<Sections::Section> _section)
     {
         if(!_section)

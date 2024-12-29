@@ -1,5 +1,5 @@
-#ifndef ITEMTYPE1_H
-#define ITEMTYPE1_H
+#ifndef ITEM_TYPE1_H
+#define ITEM_TYPE1_H
 
 #include "item.h"
 
@@ -18,4 +18,4 @@ namespace Items {
 
 }
 
-#endif // ITEMTYPE1_H
+#endif // ITEM_TYPE1_H

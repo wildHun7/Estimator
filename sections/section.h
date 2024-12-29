@@ -9,11 +9,12 @@
 #include <unordered_map>
 
 #include "item.h"
-#include "itemtype1.h"
-#include "itemtype2.h"
+#include "item_type1.h"
+#include "item_type2.h"
 
 namespace Sections
 {
+
     class Section
     {
     public:
@@ -34,6 +35,7 @@ namespace Sections
         std::string m_sectionName;
         std::unordered_map<std::unique_ptr<Items::Item>, int> m_sectionItems;
     };
+
 } //namespace Sections
 
 #endif // SECTION_H

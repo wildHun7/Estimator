@@ -1,10 +1,11 @@
-#ifndef SECTIONTYPE1_H
-#define SECTIONTYPE1_H
+#ifndef SECTION_TYPE1_H
+#define SECTION_TYPE1_H
 
 #include "section.h"
 
 namespace Sections
 {
+
     class SectionType1 : public Section
     {
     public:
@@ -12,6 +13,7 @@ namespace Sections
 
         void addItem(std::unique_ptr<Items::Item> _item) override;
     };
+
 }
 
-#endif // SECTIONTYPE1_H
+#endif // SECTION_TYPE1_H

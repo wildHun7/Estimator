@@ -1,10 +1,6 @@
-#ifndef SECTIONMANAGER_H
-#define SECTIONMANAGER_H
+#ifndef SECTION_MANAGER_H
+#define SECTION_MANAGER_H
 
-#include <iostream>
-#include <memory>
-#include <string>
-#include <vector>
 #include "section.h"
 
 namespace Manager
@@ -14,6 +10,8 @@ namespace Manager
     public:
         SectionManager() = default;
         ~SectionManager() = default;
+
+        const std::vector<std::unique_ptr<Sections::Section>>& getSections() const;
 
         // Managing sections
         void addSection(std::unique_ptr<Sections::Section> _section);
@@ -29,4 +27,4 @@ namespace Manager
         std::vector<std::unique_ptr<Sections::Section>> m_sectionList;
     };
 }
-#endif // SECTIONMANAGER_H
+#endif // SECTION_MANAGER_H

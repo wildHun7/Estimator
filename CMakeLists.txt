@@ -23,26 +23,32 @@ set(PROJECT_SOURCES
 set(ITEMS_SOURCES
         items/item.cpp
         items/item.h
-        items/itemtype1.h
-        items/itemtype1.cpp
-        items/itemtype2.h
-        items/itemtype2.cpp
+        items/item_type1.h
+        items/item_type1.cpp
+        items/item_type2.h
+        items/item_type2.cpp
 )
 
 # Adding a new subfolder Sections
 set(SECTIONS_SOURCES
         sections/section.cpp
         sections/section.h
-        sections/sectiontype1.h
-        sections/sectiontype1.cpp
-        sections/sectiontype2.h
-        sections/sectiontype2.cpp
+        sections/section_type1.h
+        sections/section_type1.cpp
+        sections/section_type2.h
+        sections/section_type2.cpp
 )
 
 # Adding a new subfolder Manager
 set(MANAGER_SOURCES
-        manager/sectionmanager.cpp
-        manager/sectionmanager.h
+        manager/section_manager.cpp
+        manager/section_manager.h
+)
+
+# Adding a new subfolder Gui
+set(GUI_SOURCES
+        gui/section_table_model.h
+        gui/section_table_model.cpp
 )
 
 # Łączymy wszystkie źródła
@@ -50,19 +56,22 @@ list(APPEND PROJECT_SOURCES
     ${ITEMS_SOURCES}
     ${SECTIONS_SOURCES}
     ${MANAGER_SOURCES}
+    ${GUI_SOURCES}
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Estimator
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+
     )
 
 target_include_directories(Estimator PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/Items
-    ${CMAKE_CURRENT_SOURCE_DIR}/Sections
-    ${CMAKE_CURRENT_SOURCE_DIR}/Manager
+    ${CMAKE_CURRENT_SOURCE_DIR}/items
+    ${CMAKE_CURRENT_SOURCE_DIR}/sections
+    ${CMAKE_CURRENT_SOURCE_DIR}/manager
+    ${CMAKE_CURRENT_SOURCE_DIR}/gui
 )
 
 # Define target properties for Android with Qt 6 as:
