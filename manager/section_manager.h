@@ -11,6 +11,7 @@ namespace Manager
         SectionManager() = default;
         ~SectionManager() = default;
 
+        // Section getter
         const std::vector<std::unique_ptr<Sections::Section>>& getSections() const;
 
         // Managing sections
@@ -20,7 +21,7 @@ namespace Manager
 
         // Helper functions
         Sections::Section* findSection(const std::string& _name);
-        void addItemToSection(const std::string& _name, std::unique_ptr<Items::Item> _item);
+        void addItemToSection(const std::string& _name, std::shared_ptr<Items::Item> _item);
         void removeItemFromSection(const std::string& _sectionName, const std::string& _itemName);
 
     private:

@@ -11,7 +11,7 @@ namespace Sections
     public:
         explicit SectionType2(const std::string& _name);
 
-        void addItem(std::unique_ptr<Items::Item> _item) override;
+        void addItem(std::shared_ptr<Items::Item> _item) override;
     };
 
 }

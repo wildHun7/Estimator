@@ -7,7 +7,7 @@ namespace Sections
 
     }
 
-    void SectionType1::addItem(std::unique_ptr<Items::Item> _item)
+    void SectionType1::addItem(std::shared_ptr<Items::Item> _item)
     {
         if(dynamic_cast<Items::ItemType1*>(_item.get()))
         {

@@ -21,19 +21,22 @@ namespace Sections
         explicit Section(const std::string& _name);
         virtual ~Section() = default;
 
+        // Items Getter
+        const std::unordered_map<std::shared_ptr<Items::Item>, int>& getItems() const;
+
         // Name
         const std::string& getName() const; // 2nd const preventing from modification of the object
         void setName(const std::string& _name);
 
-        // Data
-        virtual void addItem(std::unique_ptr<Items::Item> _item) = 0;
+        // Managing Items
+        virtual void addItem(std::shared_ptr<Items::Item> _item) = 0;
         void removeItem(const std::string& _name);
         void updateItemCount(const std::string& _name, int _count);
         virtual int calcTotal() const;
 
     protected:
         std::string m_sectionName;
-        std::unordered_map<std::unique_ptr<Items::Item>, int> m_sectionItems;
+        std::unordered_map<std::shared_ptr<Items::Item>, int> m_sectionItems;
     };
 
 } //namespace Sections

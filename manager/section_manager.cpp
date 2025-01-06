@@ -49,7 +49,7 @@ namespace Manager
         throw std::runtime_error("Section not found: " + _name);
     }
 
-    void SectionManager::addItemToSection(const std::string& _name, std::unique_ptr<Items::Item> _item)
+    void SectionManager::addItemToSection(const std::string& _name, std::shared_ptr<Items::Item> _item)
     {
         if(!_item)
             throw std::invalid_argument("Null Item");

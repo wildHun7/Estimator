@@ -7,15 +7,24 @@ namespace Sections
         // empty
     }
 
+    const std::unordered_map<std::shared_ptr<Items::Item>, int>& Section::getItems() const
+    {
+        return this->m_sectionItems;
+    }
+
+    // Name
+
     const std::string& Section::getName() const
     {
-        return m_sectionName;
+        return this->m_sectionName;
     }
 
     void Section::setName(const std::string& _name)
     {
         this->m_sectionName = _name;
     }
+
+    // Data
 
     void Section::removeItem(const std::string& _name)
     {
