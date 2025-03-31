@@ -11,8 +11,8 @@ namespace Items {
         virtual ~Item() = default;
 
         // Name
-        void setNameItem(std::string& _name);
-        std::string getName();
+        void setNameItem(std::string& name);
+        std::string getName() const;
 
         // Calculation
         virtual int calcCosts() const = 0;

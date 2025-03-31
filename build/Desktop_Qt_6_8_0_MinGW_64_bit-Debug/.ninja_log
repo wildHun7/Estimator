@@ -1,4 +1,5 @@
 # ninja log v6
+<<<<<<< Updated upstream
 531	5438	7570498636336529	CMakeFiles/Estimator.dir/mainwindow.cpp.obj	b559b1a9968be7eb
 104	530	7570498632070485	Estimator_autogen/timestamp	a4eab6e222554b8b
 104	530	7570498632070485	C:/Users/lucas/source/repos/Estimator/Estimator/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/Estimator_autogen/mocs_compilation.cpp	a4eab6e222554b8b
@@ -7,12 +8,24 @@
 104	530	7570498632070485	C:/Users/lucas/source/repos/Estimator/Estimator/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/Estimator_autogen/timestamp	a4eab6e222554b8b
 1905	11574	7569401425432952	CMakeFiles/Estimator.dir/Estimator_autogen/mocs_compilation.cpp.obj	1d222e965c058d87
 5439	6233	7570498685418706	Estimator.exe	72e6e8f7768d9e5f
+=======
+414	8847	7636804531892595	CMakeFiles/Estimator.dir/mainwindow.cpp.obj	b559b1a9968be7eb
+40	408	7636804528150401	Estimator_autogen/timestamp	a4eab6e222554b8b
+40	408	7636804528150401	C:/Users/lucas/source/repos/Estimator/Estimator/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/Estimator_autogen/mocs_compilation.cpp	a4eab6e222554b8b
+410	8889	7636804531852623	CMakeFiles/Estimator.dir/main.cpp.obj	2a35550681c5a761
+40	408	7636804528150401	Estimator_autogen/mocs_compilation.cpp	a4eab6e222554b8b
+40	408	7636804528150401	C:/Users/lucas/source/repos/Estimator/Estimator/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/Estimator_autogen/timestamp	a4eab6e222554b8b
+2431	11221	7636804044490073	CMakeFiles/Estimator.dir/Estimator_autogen/mocs_compilation.cpp.obj	1d222e965c058d87
+6205	7111	7636755133318486	Estimator.exe	52e227ec5d055e7
+>>>>>>> Stashed changes
 2449	4868	7565756686507725	CMakeFiles/Estimator.dir/Items/item.cpp.obj	c9082ff59792c817
 322	2123	7553006869944318	CMakeFiles/Estimator.dir/sectiontype2.cpp.obj	a3be18d617435cb6
 449	2779	7568567113148096	CMakeFiles/Estimator.dir/Sections/section.cpp.obj	e4c2e0ed13327cdd
 2463	4904	7565756686657588	CMakeFiles/Estimator.dir/Items/itemtype2.cpp.obj	7e09976babaf9ff0
 2456	5133	7565756686587658	CMakeFiles/Estimator.dir/Items/itemtype1.cpp.obj	9b9ce40f04c7182e
 28	87	7550093172043019	CMakeFiles/clean.additional	baedbe210acaa455
+1881	4132	7636799803355069	CMakeFiles/Estimator.dir/items/item_type2.cpp.obj	6ce4b1991c1a2218
+403	2868	7636800994172893	CMakeFiles/Estimator.dir/manager/section_manager.cpp.obj	560aa5e133172987
 87	111	7550093172632467	clean	577b940aee94fbd7
 318	2071	7553006869944318	CMakeFiles/Estimator.dir/sectiontype1.cpp.obj	9dbf083fccab122c
 417	3720	7568535500283145	CMakeFiles/Estimator.dir/Sections/sectiontype2.cpp.obj	86714d171b429873
@@ -21,6 +34,7 @@
 428	2564	7565165350103539	CMakeFiles/Estimator.dir/sectionmanager.cpp.obj	d90cfd7ef92bf3dd
 366	2693	7568537795828237	CMakeFiles/Estimator.dir/Manager/sectionmanager.cpp.obj	85d792e1169f4ab8
 4104	8549	7569401447424407	CMakeFiles/Estimator.dir/sections/sectiontype2.cpp.obj	be90a8f98825e04c
+<<<<<<< Updated upstream
 1927	4062	7569401425652743	CMakeFiles/Estimator.dir/items/item.cpp.obj	82197bcd2d4d4977
 1942	4096	7569401425801526	CMakeFiles/Estimator.dir/items/itemtype2.cpp.obj	aa1b65722287c94e
 4096	8417	7569401447334494	CMakeFiles/Estimator.dir/sections/sectiontype1.cpp.obj	59cc5879159dfc00
@@ -92,3 +106,31 @@
 2162	8664	7571963807987132	CMakeFiles/Estimator.dir/mainwindow.cpp.obj	b559b1a9968be7eb
 2157	8827	7571963807937190	CMakeFiles/Estimator.dir/Estimator_autogen/mocs_compilation.cpp.obj	1d222e965c058d87
 8828	9416	7571963874640114	Estimator.exe	52e227ec5d055e7
+=======
+1852	3903	7636799803065339	CMakeFiles/Estimator.dir/items/item.cpp.obj	82197bcd2d4d4977
+1942	4096	7569401425801526	CMakeFiles/Estimator.dir/items/itemtype2.cpp.obj	aa1b65722287c94e
+4096	8417	7569401447334494	CMakeFiles/Estimator.dir/sections/sectiontype1.cpp.obj	59cc5879159dfc00
+2446	6360	7636804044639942	CMakeFiles/Estimator.dir/sections/section.cpp.obj	46fabcd29247352f
+645	2908	7570498637475452	CMakeFiles/Estimator.dir/manager/sectionmanager.cpp.obj	91597c6653f3a34a
+8427	8774	7569401490650494	CMakeFiles/Estimator.dir/gui/sectiontablemodel.cpp.obj	d8a370e973e8fb45
+1867	4118	7636799803215199	CMakeFiles/Estimator.dir/items/item_type1.cpp.obj	d91bb2f6b829d791
+4118	8724	7636799825724250	CMakeFiles/Estimator.dir/sections/section_type1.cpp.obj	a42501de644ff1f8
+4133	8729	7636799825874112	CMakeFiles/Estimator.dir/sections/section_type2.cpp.obj	d06a1f0c35a148e4
+432	8409	7636804532082428	CMakeFiles/Estimator.dir/gui/section_table_model.cpp.obj	d528ddc1f3c2af19
+41	412	7636804829214504	Estimator_autogen/timestamp	a4eab6e222554b8b
+41	412	7636804829214504	Estimator_autogen/mocs_compilation.cpp	a4eab6e222554b8b
+41	412	7636804829214504	C:/Users/lucas/source/repos/Estimator/Estimator/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/Estimator_autogen/timestamp	a4eab6e222554b8b
+41	412	7636804829214504	C:/Users/lucas/source/repos/Estimator/Estimator/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/Estimator_autogen/mocs_compilation.cpp	a4eab6e222554b8b
+418	3353	7636804832975330	CMakeFiles/Estimator.dir/sections/section_type1.cpp.obj	a42501de644ff1f8
+422	3417	7636804833025287	CMakeFiles/Estimator.dir/sections/section_type2.cpp.obj	d06a1f0c35a148e4
+413	6236	7636804832935364	CMakeFiles/Estimator.dir/mainwindow.cpp.obj	b559b1a9968be7eb
+34	1692	7636805229197881	Estimator_autogen/timestamp	a4eab6e222554b8b
+34	1692	7636805229197881	Estimator_autogen/mocs_compilation.cpp	a4eab6e222554b8b
+34	1692	7636805229197881	C:/Users/lucas/source/repos/Estimator/Estimator/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/Estimator_autogen/timestamp	a4eab6e222554b8b
+34	1692	7636805229197881	C:/Users/lucas/source/repos/Estimator/Estimator/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/Estimator_autogen/mocs_compilation.cpp	a4eab6e222554b8b
+1704	4840	7636805230616576	CMakeFiles/Estimator.dir/manager/section_manager.cpp.obj	560aa5e133172987
+1709	8140	7636805230656538	CMakeFiles/Estimator.dir/gui/section_table_model.cpp.obj	d528ddc1f3c2af19
+1699	8608	7636805230556630	CMakeFiles/Estimator.dir/mainwindow.cpp.obj	b559b1a9968be7eb
+1695	8764	7636805230506670	CMakeFiles/Estimator.dir/Estimator_autogen/mocs_compilation.cpp.obj	1d222e965c058d87
+8765	9453	7636805301205007	Estimator.exe	52e227ec5d055e7
+>>>>>>> Stashed changes

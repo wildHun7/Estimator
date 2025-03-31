@@ -2,12 +2,12 @@
 
 namespace Items {
 
-    void Item::setNameItem(std::string& _name)
+    void Item::setNameItem(std::string& name)
     {
-       this->m_itemName = _name;
+       this->m_itemName = name;
     }
 
-    std::string Item::getName()
+    std::string Item::getName() const
     {
         return this->m_itemName;
     }

@@ -9,9 +9,13 @@ namespace Sections
     class SectionType1 : public Section
     {
     public:
-        explicit SectionType1(const std::string& _name);
+        explicit SectionType1(const std::string& name);
 
+<<<<<<< Updated upstream
         void addItem(std::unique_ptr<Items::Item> _item) override;
+=======
+        void addItem(std::unique_ptr<Items::Item> item) override;
+>>>>>>> Stashed changes
     };
 
 }

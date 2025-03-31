@@ -9,22 +9,22 @@ namespace Manager
 
     /// Managing sections
 
-    void SectionManager::addSection(std::unique_ptr<Sections::Section> _section)
+    void SectionManager::addSection(std::unique_ptr<Sections::Section> section)
     {
-        if(!_section)
+        if(!section)
             throw std::invalid_argument("null");
 
-        m_sectionList.push_back(std::move(_section));
+        m_sectionList.push_back(std::move(section));
     }
 
-    void SectionManager::remvSection(const std::string& _name)
+    void SectionManager::remvSection(const std::string& name)
     {
-        auto it = std::remove_if(m_sectionList.begin(), m_sectionList.end(), [&_name]
-                                 (const std::unique_ptr<Sections::Section>& _section)
-                                 {return _section->getName() == _name;} );
+        auto it = std::remove_if(m_sectionList.begin(), m_sectionList.end(), [&name]
+                                 (const std::unique_ptr<Sections::Section>& section)
+                                 {return section->getName() == name;} );
 
         if(it == m_sectionList.end())
-            throw std::runtime_error("Section not found: " + _name);
+            throw std::runtime_error("Section not found: " + name);
 
         m_sectionList.erase(it, m_sectionList.end());
     }
@@ -32,36 +32,40 @@ namespace Manager
     int SectionManager::calculateTotalCosts() const
     {
         int total = 0;
-        for(const auto& _section: m_sectionList)
-            total += _section->calcTotal();
+        for(const auto& section: m_sectionList)
+            total += section->calcTotal();
 
         return total;
     }
 
     /// Helper functions
 
-    Sections::Section* SectionManager::findSection(const std::string& _name)
+    Sections::Section* SectionManager::findSection(const std::string& name)
     {
-        for(const auto& _section: m_sectionList){
-            if(_section->getName() == _name)
-                return _section.get();
+        for(const auto& section: m_sectionList){
+            if(section->getName() == name)
+                return section.get();
         }
-        throw std::runtime_error("Section not found: " + _name);
+        throw std::runtime_error("Section not found: " + name);
     }
 
+<<<<<<< Updated upstream
     void SectionManager::addItemToSection(const std::string& _name, std::unique_ptr<Items::Item> _item)
+=======
+    void SectionManager::addItemToSection(const std::string& name, std::unique_ptr<Items::Item> item)
+>>>>>>> Stashed changes
     {
-        if(!_item)
+        if(!item)
             throw std::invalid_argument("Null Item");
 
-        auto _section = findSection(_name);
-        _section->addItem(std::move(_item));
+        auto section = findSection(name);
+        section->addItem(std::move(item));
     }
 
-    void SectionManager::removeItemFromSection(const std::string& _sectionName, const std::string& _itemName)
+    void SectionManager::removeItemFromSection(const std::string& sectionName, const std::string& itemName)
     {
-        auto _section = findSection(_sectionName);
-        _section->removeItem(_itemName);
+        auto section = findSection(sectionName);
+        section->removeItem(itemName);
     }
 }
 

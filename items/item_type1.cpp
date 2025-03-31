@@ -2,7 +2,7 @@
 
 namespace Items {
 
-    ItemType1::ItemType1(int _lCost) : m_laborCost(_lCost) {}
+    ItemType1::ItemType1(int lCost) : m_laborCost(lCost) {}
 
     int ItemType1::calcCosts() const
     {

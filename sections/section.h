@@ -18,17 +18,30 @@ namespace Sections
     class Section
     {
     public:
-        explicit Section(const std::string& _name);
+        explicit Section(const std::string& name);
         virtual ~Section() = default;
 
+<<<<<<< Updated upstream
+=======
+        // Items Getter
+        const std::unordered_map<std::unique_ptr<Items::Item>, int>& getItems() const;
+
+>>>>>>> Stashed changes
         // Name
         const std::string& getName() const; // 2nd const preventing from modification of the object
-        void setName(const std::string& _name);
+        void setName(const std::string& name);
 
+<<<<<<< Updated upstream
         // Data
         virtual void addItem(std::unique_ptr<Items::Item> _item) = 0;
         void removeItem(const std::string& _name);
         void updateItemCount(const std::string& _name, int _count);
+=======
+        // Managing Items
+        virtual void addItem(std::unique_ptr<Items::Item> item) = 0;
+        void removeItem(const std::string& name);
+        void updateItemCount(const std::string& name, int count);
+>>>>>>> Stashed changes
         virtual int calcTotal() const;
 
     protected:

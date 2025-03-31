@@ -8,7 +8,7 @@ namespace Items {
     class ItemType1 : public Item
     {
     public:
-        ItemType1(int _lCost);
+        ItemType1(int lCost);
 
         virtual int calcCosts() const override;
 
