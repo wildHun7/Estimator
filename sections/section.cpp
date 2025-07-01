@@ -7,8 +7,6 @@ namespace Sections
         // empty
     }
 
-<<<<<<< Updated upstream
-=======
     const std::unordered_map<std::unique_ptr<Items::Item>, int>& Section::getItems() const
     {
         return this->m_sectionItems;
@@ -16,7 +14,6 @@ namespace Sections
 
     // Name
 
->>>>>>> Stashed changes
     const std::string& Section::getName() const
     {
         return m_sectionName;
@@ -27,13 +24,9 @@ namespace Sections
         this->m_sectionName = name;
     }
 
-<<<<<<< Updated upstream
-    void Section::removeItem(const std::string& _name)
-=======
     // Data
 
     void Section::removeItem(const std::string& name)
->>>>>>> Stashed changes
     {
         auto it = std::find_if(m_sectionItems.begin(), m_sectionItems.end(),
                                [&name](const auto& mp){ return mp.first->getName() == name;

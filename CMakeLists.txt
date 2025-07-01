@@ -51,7 +51,6 @@ set(GUI_SOURCES
         gui/section_table_model.cpp
 )
 
-# Łączymy wszystkie źródła
 list(APPEND PROJECT_SOURCES
     ${ITEMS_SOURCES}
     ${SECTIONS_SOURCES}

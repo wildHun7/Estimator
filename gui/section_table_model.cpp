@@ -2,25 +2,19 @@
 
 namespace GUI
 {
-<<<<<<< Updated upstream
-    SectionTableModel::SectionTableModel(Manager::SectionManager& _manager, QObject* _parrent)
-    : m_manager(_manager), QAbstractTableModel(_parrent)
-    {
-
-=======
     SectionTableModel::SectionTableModel(Manager::SectionManager& manager, QObject* parent)
     : m_manager(manager), QAbstractTableModel(parent)
     {
 
     }
 
-    SectionTableModel::rowCount(const QModelIndex& parent) const
+    int SectionTableModel::rowCount(const QModelIndex& parent) const
     {
         Q_UNUSED(parent);
         return totalRowCount();
     }
 
-    SectionTableModel::columnCount(const QModelIndex& parent) const
+    int SectionTableModel::columnCount(const QModelIndex& parent) const
     {
         Q_UNUSED(parent);
         return 4; // Item Name, Quantity, Price, Total Price
@@ -31,7 +25,7 @@ namespace GUI
         if(role != Qt::DisplayRole)
             return QVariant();
 
-        if(orientation = Qt::Horizontal)
+        if(orientation == Qt::Horizontal)
         {
             switch(section)
             {
@@ -43,7 +37,7 @@ namespace GUI
             }
         }
 
-        else if(orientation = Qt::Vertical)
+        else if(orientation == Qt::Vertical)
             return section + 1;
 
         return QVariant();
@@ -57,7 +51,7 @@ namespace GUI
         int row = index.row();
         int column = index.column();
 
-        auto [sectionIndex, itemIndex] = indexOfSectionAndItem(row);
+        auto [sectionIndex, itemIndex] = indexOfSectionOrItem(row);
 
         if(itemIndex == -1) // Section
         {
@@ -106,23 +100,23 @@ namespace GUI
             count += section->getItems().size();
         }
         return count;
->>>>>>> Stashed changes
+
     }
 
-    std::pair<int, int> SectionTableModel::indexOfSectionAndItem(int row) const
+    std::pair<int, int> SectionTableModel::indexOfSectionOrItem(int row) const
     {
         int current_row = 0;
 
         for(size_t section_index = 0; section_index < m_manager.getSections().size(); ++section_index)
         {
-            if(current_row = row)
+            if(current_row == row)
                 return {static_cast<int>(section_index), -1};
 
             current_row++;
 
             for(size_t item_index = 0; item_index < m_manager.getSections()[section_index]->getItems().size(); ++item_index)
             {
-                if(current_row = row)
+                if(current_row == row)
                     return {static_cast<int>(section_index), static_cast<int>(item_index)};
                 ++current_row;
             }

@@ -1,0 +1,9 @@
+C:/dev/Estimator/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/Estimator.dir
+C:/dev/Estimator/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+C:/dev/Estimator/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+C:/dev/Estimator/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
+C:/dev/Estimator/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/install.dir
+C:/dev/Estimator/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
+C:/dev/Estimator/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
+C:/dev/Estimator/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/Estimator_autogen_timestamp_deps.dir
+C:/dev/Estimator/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/Estimator_autogen.dir

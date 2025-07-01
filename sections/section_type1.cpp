@@ -7,11 +7,7 @@ namespace Sections
 
     }
 
-<<<<<<< Updated upstream
-    void SectionType1::addItem(std::unique_ptr<Items::Item> _item)
-=======
     void SectionType1::addItem(std::unique_ptr<Items::Item> item)
->>>>>>> Stashed changes
     {
         if(dynamic_cast<Items::ItemType1*>(item.get()))
         {

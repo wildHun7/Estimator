@@ -49,11 +49,7 @@ namespace Manager
         throw std::runtime_error("Section not found: " + name);
     }
 
-<<<<<<< Updated upstream
-    void SectionManager::addItemToSection(const std::string& _name, std::unique_ptr<Items::Item> _item)
-=======
     void SectionManager::addItemToSection(const std::string& name, std::unique_ptr<Items::Item> item)
->>>>>>> Stashed changes
     {
         if(!item)
             throw std::invalid_argument("Null Item");
