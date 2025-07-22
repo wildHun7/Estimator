@@ -28,7 +28,6 @@ namespace Sections
         const std::string& getName() const; // 2nd const preventing from modification of the object
         void setName(const std::string& name);
 
-
         // Managing Items
         virtual void addItem(std::unique_ptr<Items::Item> item) = 0;
         void removeItem(const std::string& name);

@@ -599,6 +599,8 @@ Estimator_autogen/timestamp: \
 	C:/dev/Estimator/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake \
 	C:/dev/Estimator/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
 	C:/dev/Estimator/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Estimator_autogen/moc_predefs.h \
+	C:/dev/Estimator/gui/mainwindow.cpp \
+	C:/dev/Estimator/gui/mainwindow.h \
 	C:/dev/Estimator/gui/section_table_model.cpp \
 	C:/dev/Estimator/gui/section_table_model.h \
 	C:/dev/Estimator/items/item.cpp \
@@ -608,8 +610,6 @@ Estimator_autogen/timestamp: \
 	C:/dev/Estimator/items/item_type2.cpp \
 	C:/dev/Estimator/items/item_type2.h \
 	C:/dev/Estimator/main.cpp \
-	C:/dev/Estimator/mainwindow.cpp \
-	C:/dev/Estimator/mainwindow.h \
 	C:/dev/Estimator/manager/section_manager.cpp \
 	C:/dev/Estimator/manager/section_manager.h \
 	C:/dev/Estimator/sections/section.cpp \
@@ -618,5 +618,5 @@ Estimator_autogen/timestamp: \
 	C:/dev/Estimator/sections/section_type1.h \
 	C:/dev/Estimator/sections/section_type2.cpp \
 	C:/dev/Estimator/sections/section_type2.h \
-	C:/dev/Estimator/mainwindow.ui \
+	C:/dev/Estimator/gui/mainwindow.ui \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

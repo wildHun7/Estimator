@@ -14,7 +14,7 @@ namespace GUI
         Q_OBJECT
     public:
 
-        SectionTableModel(Manager::SectionManager& manager, QObject* parent = nullptr);
+        SectionTableModel(Manager::SectionManager* manager, QObject* parent = nullptr);
 
         int rowCount(const QModelIndex& parent = QModelIndex()) const override;
         int columnCount(const QModelIndex& parent = QModelIndex()) const override;
@@ -25,7 +25,7 @@ namespace GUI
         void refresh();
 
     private:
-        Manager::SectionManager& m_manager;
+        Manager::SectionManager* m_manager;
 
         // Private helper functions
         int totalRowCount() const;

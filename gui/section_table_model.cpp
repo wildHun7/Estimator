@@ -2,7 +2,7 @@
 
 namespace GUI
 {
-    SectionTableModel::SectionTableModel(Manager::SectionManager& manager, QObject* parent)
+    SectionTableModel::SectionTableModel(Manager::SectionManager* manager, QObject* parent)
     : m_manager(manager), QAbstractTableModel(parent)
     {
 
@@ -56,11 +56,11 @@ namespace GUI
         if(itemIndex == -1) // Section
         {
             if(column == 0)
-                return QString::fromStdString(m_manager.getSections()[sectionIndex]->getName());
+                return QString::fromStdString(m_manager->getSections()[sectionIndex]->getName());
         return QVariant();
         } else
             { // Item
-            const auto& section = m_manager.getSections()[sectionIndex];
+            const auto& section = m_manager->getSections()[sectionIndex];
             const auto& itemsMap = section->getItems();
             auto it = std::next(itemsMap.begin(), itemIndex);
             const auto& itemPtr = it->first;
@@ -94,7 +94,7 @@ namespace GUI
     int SectionTableModel::totalRowCount() const
     {
         int count = 0;
-        for(const auto& section: m_manager.getSections())
+        for(const auto& section: m_manager->getSections())
         {
             count += 1;
             count += section->getItems().size();
@@ -107,14 +107,14 @@ namespace GUI
     {
         int current_row = 0;
 
-        for(size_t section_index = 0; section_index < m_manager.getSections().size(); ++section_index)
+        for(size_t section_index = 0; section_index < m_manager->getSections().size(); ++section_index)
         {
             if(current_row == row)
                 return {static_cast<int>(section_index), -1};
 
             current_row++;
 
-            for(size_t item_index = 0; item_index < m_manager.getSections()[section_index]->getItems().size(); ++item_index)
+            for(size_t item_index = 0; item_index < m_manager->getSections()[section_index]->getItems().size(); ++item_index)
             {
                 if(current_row == row)
                     return {static_cast<int>(section_index), static_cast<int>(item_index)};

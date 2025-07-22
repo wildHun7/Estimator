@@ -332,6 +332,12 @@
 	"HEADERS" : 
 	[
 		[
+			"C:/dev/Estimator/gui/mainwindow.h",
+			"MU",
+			"DMHXEJ42XS/moc_mainwindow.cpp",
+			null
+		],
+		[
 			"C:/dev/Estimator/gui/section_table_model.h",
 			"MU",
 			"DMHXEJ42XS/moc_section_table_model.cpp",
@@ -353,12 +359,6 @@
 			"C:/dev/Estimator/items/item_type2.h",
 			"MU",
 			"HU7TA6T7T7/moc_item_type2.cpp",
-			null
-		],
-		[
-			"C:/dev/Estimator/mainwindow.h",
-			"MU",
-			"EWIEGA46WW/moc_mainwindow.cpp",
 			null
 		],
 		[
@@ -462,12 +462,12 @@
 	"SETTINGS_FILE" : "C:/dev/Estimator/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/Estimator_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "C:/dev/Estimator/gui/mainwindow.cpp", "MU", null ],
 		[ "C:/dev/Estimator/gui/section_table_model.cpp", "MU", null ],
 		[ "C:/dev/Estimator/items/item.cpp", "MU", null ],
 		[ "C:/dev/Estimator/items/item_type1.cpp", "MU", null ],
 		[ "C:/dev/Estimator/items/item_type2.cpp", "MU", null ],
 		[ "C:/dev/Estimator/main.cpp", "MU", null ],
-		[ "C:/dev/Estimator/mainwindow.cpp", "MU", null ],
 		[ "C:/dev/Estimator/manager/section_manager.cpp", "MU", null ],
 		[ "C:/dev/Estimator/sections/section.cpp", "MU", null ],
 		[ "C:/dev/Estimator/sections/section_type1.cpp", "MU", null ],

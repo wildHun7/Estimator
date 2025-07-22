@@ -14,12 +14,10 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
+
 )
 
-# Adding a new subfolder Items
+# Adding new subfolder Items
 set(ITEMS_SOURCES
         items/item.cpp
         items/item.h
@@ -29,7 +27,7 @@ set(ITEMS_SOURCES
         items/item_type2.cpp
 )
 
-# Adding a new subfolder Sections
+# Adding new subfolder Sections
 set(SECTIONS_SOURCES
         sections/section.cpp
         sections/section.h
@@ -39,16 +37,19 @@ set(SECTIONS_SOURCES
         sections/section_type2.cpp
 )
 
-# Adding a new subfolder Manager
+# Adding new subfolder Manager
 set(MANAGER_SOURCES
         manager/section_manager.cpp
         manager/section_manager.h
 )
 
-# Adding a new subfolder Gui
+# Adding new subfolder Gui
 set(GUI_SOURCES
         gui/section_table_model.h
         gui/section_table_model.cpp
+        gui/mainwindow.cpp
+        gui/mainwindow.h
+        gui/mainwindow.ui
 )
 
 list(APPEND PROJECT_SOURCES

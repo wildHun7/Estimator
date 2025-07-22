@@ -13,8 +13,8 @@ namespace Items {
         virtual int calcCosts() const override;
 
     private:
-        int m_laborCost;
-        int m_materialCost;
+        int m_labor_cost;
+        int m_material_cost;
     };
 
 }

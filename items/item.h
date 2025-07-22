@@ -18,7 +18,7 @@ namespace Items {
         virtual int calcCosts() const = 0;
 
     protected:
-    std::string m_itemName;
+    std::string m_item_name;
     };
 
 }
