@@ -11,14 +11,14 @@ namespace Sections
     {
         if(dynamic_cast<Items::ItemType2*>(item.get()))
         {
-            for(const auto& [itemPtr, count]: m_sectionItems)
-            {
-                if(itemPtr->getName() == item->getName())
-                    throw std::invalid_argument("Item with the same name already exist");
-            }
-            m_sectionItems.emplace(std::move(item), 1);
+            std::string item_name = item->getName();
+
+            if(m_section_items.find(item_name) != m_section_items.end())
+                throw std::invalid_argument("Item with the same name already exist");
+
+            m_section_items.emplace(item_name, std::make_pair(std::move(item), 1));
         }
         else
-            throw std::invalid_argument("Invalid item type for SectionType1");
+            throw std::invalid_argument("Invalid item type for SectionType2");
     }
 }

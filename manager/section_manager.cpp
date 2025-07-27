@@ -4,7 +4,7 @@ namespace Manager
 {
     const std::vector<std::unique_ptr<Sections::Section>>& SectionManager::getSections() const
     {
-        return m_sectionList;
+        return m_section_list;
     }
 
     /// Managing sections
@@ -14,25 +14,25 @@ namespace Manager
         if(!section)
             throw std::invalid_argument("null");
 
-        m_sectionList.push_back(std::move(section));
+        m_section_list.push_back(std::move(section));
     }
 
-    void SectionManager::remvSection(const std::string& name)
+    void SectionManager::removeSection(const std::string& name)
     {
-        auto it = std::remove_if(m_sectionList.begin(), m_sectionList.end(), [&name]
+        auto it = std::remove_if(m_section_list.begin(), m_section_list.end(), [&name]
                                  (const std::unique_ptr<Sections::Section>& section)
                                  {return section->getName() == name;} );
 
-        if(it == m_sectionList.end())
+        if(it == m_section_list.end())
             throw std::runtime_error("Section not found: " + name);
 
-        m_sectionList.erase(it, m_sectionList.end());
+        m_section_list.erase(it, m_section_list.end());
     }
 
     int SectionManager::calculateTotalCosts() const
     {
         int total = 0;
-        for(const auto& section: m_sectionList)
+        for(const auto& section: m_section_list)
             total += section->calcTotal();
 
         return total;
@@ -42,7 +42,7 @@ namespace Manager
 
     Sections::Section* SectionManager::findSection(const std::string& name)
     {
-        for(const auto& section: m_sectionList){
+        for(const auto& section: m_section_list){
             if(section->getName() == name)
                 return section.get();
         }

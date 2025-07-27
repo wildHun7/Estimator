@@ -2,64 +2,58 @@
 
 namespace Sections
 {
-    Section::Section(const std::string& name) : m_sectionName(name)
+    Section::Section(const std::string& name) : m_section_name(name)
     {
         // empty
     }
 
-    const std::unordered_map<std::unique_ptr<Items::Item>, int>& Section::getItems() const
+    const std::unordered_map<std::string, std::pair<std::unique_ptr<Items::Item>, int>>& Section::getItems() const
     {
-        return this->m_sectionItems;
+        return this->m_section_items;
     }
 
     // Name
 
     const std::string& Section::getName() const
     {
-        return m_sectionName;
+        return m_section_name;
     }
 
     void Section::setName(const std::string& name)
     {
-        this->m_sectionName = name;
+        this->m_section_name = name;
     }
 
     // Data
 
     void Section::removeItem(const std::string& name)
     {
-        auto it = std::find_if(m_sectionItems.begin(), m_sectionItems.end(),
-                               [&name](const auto& mp){ return mp.first->getName() == name;
-                               });
+        auto item = m_section_items.find(name);
 
-        if(it != m_sectionItems.end())
-            m_sectionItems.erase(it);
+        if(item != m_section_items.end())
+            m_section_items.erase(item);
         else
             throw std::invalid_argument("Item not found: " + name);
     }
 
     void Section::updateItemCount(const std::string& name, int count)
     {
-        for(auto it = m_sectionItems.begin(); it != m_sectionItems.end(); ++it)
-        {
-            if(it->first->getName() == name)
-            {
-                it->second += count;
-                return;
-            }
-        }
+        auto item = m_section_items.find(name);
 
-        throw std::invalid_argument("Item not found");
+        if(item != m_section_items.end())
+            item->second.second += count;
+        else
+            throw std::invalid_argument("Item not found");
     }
 
     int Section::calcTotal() const
     {
-        if(m_sectionItems.empty())
+        if(m_section_items.empty())
             throw std::runtime_error("Section is empty");
 
         int total = 0;
-        for(const auto& [itemPtr, count] : m_sectionItems){
-            total += itemPtr->calcCosts() * count;
+        for(const auto& [name, pair] : m_section_items){
+            total += pair.first->calcCosts() * pair.second;
         }
         return total;
     }

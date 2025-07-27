@@ -29,7 +29,7 @@ namespace GUI
         {
             switch(section)
             {
-                case 0: return "Item";
+                case 0: return "Item/Section";
                 case 1: return "Quantity";
                 case 2: return "Price";
                 case 3: return "Total Price";
@@ -52,28 +52,29 @@ namespace GUI
         int column = index.column();
 
         auto [sectionIndex, itemIndex] = indexOfSectionOrItem(row);
+        const auto& section = m_manager->getSections()[sectionIndex];
 
-        if(itemIndex == -1) // Section
+        if(itemIndex == -1) // Section row
         {
             if(column == 0)
-                return QString::fromStdString(m_manager->getSections()[sectionIndex]->getName());
-        return QVariant();
-        } else
-            { // Item
-            const auto& section = m_manager->getSections()[sectionIndex];
+                return QString::fromStdString(section->getName());
+            return QVariant();
+        }
+        else // Item row
+            {
             const auto& itemsMap = section->getItems();
             auto it = std::next(itemsMap.begin(), itemIndex);
-            const auto& itemPtr = it->first;
-            int itemCount = it->second;
+            const auto& itemPtr = it->second.first;
+            int quantity = it->second.second;
 
             if(itemPtr){
                 const auto& item = *itemPtr;
 
                 switch(column) {
                 case 0: return QString::fromStdString(item.getName());
-                case 1: return itemCount;
+                case 1: return quantity;
                 case 2: return item.calcCosts();
-                case 3: return item.calcCosts() * itemCount;
+                case 3: return item.calcCosts() * quantity;
                 }
             }
         }
@@ -114,11 +115,13 @@ namespace GUI
 
             current_row++;
 
-            for(size_t item_index = 0; item_index < m_manager->getSections()[section_index]->getItems().size(); ++item_index)
+            int item_index = 0;
+            for(const auto& [itemPtr, itemData]: m_manager->getSections()[section_index]->getItems())
             {
                 if(current_row == row)
-                    return {static_cast<int>(section_index), static_cast<int>(item_index)};
+                    return {static_cast<int>(section_index), item_index};
                 ++current_row;
+                ++item_index;
             }
         }
         return {-1, -1};

@@ -15,7 +15,7 @@ namespace Manager
 
         // Managing sections
         void addSection(std::unique_ptr<Sections::Section> section);
-        void remvSection(const std::string& name);
+        void removeSection(const std::string& name);
         int calculateTotalCosts() const;
 
         // Helper functions
@@ -25,7 +25,7 @@ namespace Manager
         void removeItemFromSection(const std::string& sectionName, const std::string& itemName);
 
     private:
-        std::vector<std::unique_ptr<Sections::Section>> m_sectionList;
+        std::vector<std::unique_ptr<Sections::Section>> m_section_list;
     };
 }
 #endif // SECTION_MANAGER_H

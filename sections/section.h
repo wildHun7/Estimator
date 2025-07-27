@@ -22,7 +22,7 @@ namespace Sections
         virtual ~Section() = default;
 
         // Items Getter
-        const std::unordered_map<std::unique_ptr<Items::Item>, int>& getItems() const;
+        const std::unordered_map<std::string, std::pair<std::unique_ptr<Items::Item>, int>>& getItems() const;
 
         // Name
         const std::string& getName() const; // 2nd const preventing from modification of the object
@@ -36,8 +36,8 @@ namespace Sections
         virtual int calcTotal() const;
 
     protected:
-        std::string m_sectionName;
-        std::unordered_map<std::unique_ptr<Items::Item>, int> m_sectionItems;
+        std::string m_section_name;
+        std::unordered_map<std::string, std::pair<std::unique_ptr<Items::Item>, int>> m_section_items;
     };
 
 } //namespace Sections
