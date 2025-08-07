@@ -8,6 +8,11 @@ namespace GUI
 
     }
 
+    Manager::SectionManager* SectionTableModel::getManager() const
+    {
+        return m_manager;
+    }
+
     int SectionTableModel::rowCount(const QModelIndex& parent) const
     {
         Q_UNUSED(parent);

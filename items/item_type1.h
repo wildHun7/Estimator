@@ -3,19 +3,18 @@
 
 #include "item.h"
 
-namespace Items {
-
+namespace Items
+{
     class ItemType1 : public Item
     {
     public:
-        ItemType1(int lCost);
+        ItemType1(const std::string& name, int lCost);
 
         virtual int calcCosts() const override;
 
     private:
         int m_labor_cost;
     };
-
 }
 
 #endif // ITEM_TYPE1_H

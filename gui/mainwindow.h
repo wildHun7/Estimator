@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
+#include <QInputDialog>
 #include "section_table_model.h"
 
 QT_BEGIN_NAMESPACE
@@ -15,7 +17,7 @@ namespace GUI
 {
 
     class MainWindow : public QMainWindow
-{
+    {
         Q_OBJECT
 
     public:
@@ -23,9 +25,13 @@ namespace GUI
         ~MainWindow();
 
     private:
-    Ui::MainWindow* ui;
-    SectionTableModel* m_model;
-};
+        Ui::MainWindow* ui;
+        SectionTableModel* m_model;
+    private slots:
+        void on_addSectionButton_clicked();
+        void on_addItemButton_clicked();
+        void on_removeSectionButton_clicked();
+    };
 
 } //namespace GUI
 

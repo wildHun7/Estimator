@@ -1,7 +1,7 @@
 #include "item.h"
 
-namespace Items {
-
+namespace Items
+{
     void Item::setNameItem(std::string& name)
     {
        this->m_item_name = name;
@@ -11,7 +11,6 @@ namespace Items {
     {
         return this->m_item_name;
     }
-
 }
 
 

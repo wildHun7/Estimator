@@ -13,8 +13,9 @@ namespace GUI
     {
         Q_OBJECT
     public:
-
         SectionTableModel(Manager::SectionManager* manager, QObject* parent = nullptr);
+
+        Manager::SectionManager* getManager() const;
 
         int rowCount(const QModelIndex& parent = QModelIndex()) const override;
         int columnCount(const QModelIndex& parent = QModelIndex()) const override;

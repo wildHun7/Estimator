@@ -14,8 +14,10 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -25,6 +27,11 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QTableView *tableView;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *buttonLayout;
+    QPushButton *addSectionButton;
+    QPushButton *removeSectionButton;
+    QPushButton *addItemButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -37,7 +44,28 @@ public:
         centralwidget->setObjectName("centralwidget");
         tableView = new QTableView(centralwidget);
         tableView->setObjectName("tableView");
-        tableView->setGeometry(QRect(60, 60, 681, 441));
+        tableView->setGeometry(QRect(60, 60, 521, 451));
+        verticalLayoutWidget = new QWidget(centralwidget);
+        verticalLayoutWidget->setObjectName("verticalLayoutWidget");
+        verticalLayoutWidget->setGeometry(QRect(639, 160, 131, 161));
+        buttonLayout = new QVBoxLayout(verticalLayoutWidget);
+        buttonLayout->setObjectName("buttonLayout");
+        buttonLayout->setContentsMargins(0, 0, 0, 0);
+        addSectionButton = new QPushButton(verticalLayoutWidget);
+        addSectionButton->setObjectName("addSectionButton");
+
+        buttonLayout->addWidget(addSectionButton);
+
+        removeSectionButton = new QPushButton(verticalLayoutWidget);
+        removeSectionButton->setObjectName("removeSectionButton");
+
+        buttonLayout->addWidget(removeSectionButton);
+
+        addItemButton = new QPushButton(verticalLayoutWidget);
+        addItemButton->setObjectName("addItemButton");
+
+        buttonLayout->addWidget(addItemButton);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -55,6 +83,9 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        addSectionButton->setText(QCoreApplication::translate("MainWindow", "Add Section", nullptr));
+        removeSectionButton->setText(QCoreApplication::translate("MainWindow", "Remove Section", nullptr));
+        addItemButton->setText(QCoreApplication::translate("MainWindow", "Add Item", nullptr));
     } // retranslateUi
 
 };

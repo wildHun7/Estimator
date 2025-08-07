@@ -3,8 +3,8 @@
 
 #include <string>
 
-namespace Items {
-
+namespace Items
+{
     class Item
     {
     public:
@@ -20,7 +20,6 @@ namespace Items {
     protected:
     std::string m_item_name;
     };
-
 }
 
 #endif // ITEM_H

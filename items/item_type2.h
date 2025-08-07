@@ -3,8 +3,8 @@
 
 #include "item.h"
 
-namespace Items {
-
+namespace Items
+{
     class ItemType2 : public Item
     {
     public:
@@ -16,7 +16,6 @@ namespace Items {
         int m_labor_cost;
         int m_material_cost;
     };
-
 }
 
 #endif // ITEM_TYPE2_H

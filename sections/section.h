@@ -14,7 +14,6 @@
 
 namespace Sections
 {
-
     class Section
     {
     public:
@@ -29,7 +28,7 @@ namespace Sections
         void setName(const std::string& name);
 
         // Managing Items
-        virtual void addItem(std::unique_ptr<Items::Item> item) = 0;
+        virtual void addItem(std::unique_ptr<Items::Item> item, int quantity = 1) = 0;
         void removeItem(const std::string& name);
         void updateItemCount(const std::string& name, int count);
 
@@ -39,7 +38,6 @@ namespace Sections
         std::string m_section_name;
         std::unordered_map<std::string, std::pair<std::unique_ptr<Items::Item>, int>> m_section_items;
     };
-
 } //namespace Sections
 
 #endif // SECTION_H
