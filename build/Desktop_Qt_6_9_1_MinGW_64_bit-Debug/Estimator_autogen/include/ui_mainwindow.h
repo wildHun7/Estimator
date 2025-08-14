@@ -32,6 +32,7 @@ public:
     QPushButton *addSectionButton;
     QPushButton *removeSectionButton;
     QPushButton *addItemButton;
+    QPushButton *removeItemButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -47,7 +48,7 @@ public:
         tableView->setGeometry(QRect(60, 60, 521, 451));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName("verticalLayoutWidget");
-        verticalLayoutWidget->setGeometry(QRect(639, 160, 131, 161));
+        verticalLayoutWidget->setGeometry(QRect(639, 160, 131, 211));
         buttonLayout = new QVBoxLayout(verticalLayoutWidget);
         buttonLayout->setObjectName("buttonLayout");
         buttonLayout->setContentsMargins(0, 0, 0, 0);
@@ -65,6 +66,11 @@ public:
         addItemButton->setObjectName("addItemButton");
 
         buttonLayout->addWidget(addItemButton);
+
+        removeItemButton = new QPushButton(verticalLayoutWidget);
+        removeItemButton->setObjectName("removeItemButton");
+
+        buttonLayout->addWidget(removeItemButton);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -86,6 +92,7 @@ public:
         addSectionButton->setText(QCoreApplication::translate("MainWindow", "Add Section", nullptr));
         removeSectionButton->setText(QCoreApplication::translate("MainWindow", "Remove Section", nullptr));
         addItemButton->setText(QCoreApplication::translate("MainWindow", "Add Item", nullptr));
+        removeItemButton->setText(QCoreApplication::translate("MainWindow", "Remove Item", nullptr));
     } // retranslateUi
 
 };

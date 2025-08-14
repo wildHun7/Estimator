@@ -63,7 +63,6 @@ namespace GUI
             auto item = std::make_unique<Items::ItemType1>(item_name.toStdString(), cost);
             auto section = m_model->getManager()->findSection(chosen_section.toStdString());
             section->addItem(std::move(item), quantity);
-
             m_model->refresh();
         }   catch(const std::exception& e) {
             QMessageBox::warning(this, "Błąd", QString("Nie udało się dodać itemu:\n") + e.what());
@@ -96,6 +95,51 @@ namespace GUI
             m_model->refresh();
         } catch (std::exception e) {
             QMessageBox::warning(this, "Błąd", QString("Nie udało się usunąć sekcji:\n") + e.what());
+        }
+    }
+
+    void MainWindow::on_removeItemButton_clicked()
+    {
+        // 1. Preparing section list
+
+        QStringList section_list;
+        for(const auto& section: m_model->getManager()->getSections())
+            section_list << QString::fromStdString(section->getName());
+
+        if(section_list.isEmpty())
+        {
+            QMessageBox::information(this, "No Sections", "There are no sections available.");
+            return;
+        }
+
+        bool ok;
+        QString chosen_section = QInputDialog::getItem(this, "Select Section", "Choose a section:", section_list, 0, false, &ok);
+        if(!ok || chosen_section.isEmpty())
+            return;
+
+        // 2. Item selection
+
+        auto section = m_model->getManager()->findSection(chosen_section.toStdString());
+        QStringList item_list;
+        for(const auto&[name, pair]: section->getItems())
+            item_list << QString::fromStdString(name);
+
+        if(item_list.isEmpty())
+        {
+            QMessageBox::information(this, "No Items", "There are no items in this section.");
+            return;
+        }
+
+        QString chosen_item;
+        chosen_item = QInputDialog::getItem(this, "Select Item", "Choose an item to remove:", item_list, 0, false, &ok);
+        if(!ok || chosen_item.isEmpty())
+            return;
+
+        try {
+            section->removeItem(chosen_item.toStdString());
+            m_model->refresh();
+        } catch (const std::exception e) {
+            QMessageBox::warning(this, "Error", QString("Failed to remove item:\n") + e.what());
         }
     }
 

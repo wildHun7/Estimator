@@ -27,10 +27,12 @@ namespace GUI
     private:
         Ui::MainWindow* ui;
         SectionTableModel* m_model;
+
     private slots:
         void on_addSectionButton_clicked();
         void on_addItemButton_clicked();
         void on_removeSectionButton_clicked();
+        void on_removeItemButton_clicked();
     };
 
 } //namespace GUI

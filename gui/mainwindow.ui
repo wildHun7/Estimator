@@ -30,7 +30,7 @@
       <x>639</x>
       <y>160</y>
       <width>131</width>
-      <height>161</height>
+      <height>211</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="buttonLayout">
@@ -52,6 +52,13 @@
       <widget class="QPushButton" name="addItemButton">
        <property name="text">
         <string>Add Item</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="removeItemButton">
+       <property name="text">
+        <string>Remove Item</string>
        </property>
       </widget>
      </item>

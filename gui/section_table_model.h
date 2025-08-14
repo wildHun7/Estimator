@@ -9,6 +9,7 @@
 
 namespace GUI
 {
+
     class SectionTableModel : public QAbstractTableModel
     {
         Q_OBJECT
@@ -33,5 +34,6 @@ namespace GUI
         std::pair<int, int> indexOfSectionOrItem(int row) const;
 
     };
+
 }
 #endif // SECTION_TABLE_MODEL_H
