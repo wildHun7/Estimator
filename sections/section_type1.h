@@ -8,7 +8,7 @@ namespace Sections
     class SectionType1 : public Section
     {
     public:
-        explicit SectionType1(const std::string& name);
+        explicit SectionType1(std::string_view name);
 
         void addItem(std::unique_ptr<Items::Item> item, int quantity = 1) override;
     };

@@ -12,11 +12,12 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    auto* manager = new Manager::SectionManager();
-    auto* model = new GUI::SectionTableModel(manager);
-    GUI::MainWindow w(model);
-    w.show();
+    QApplication app(argc, argv);
+    auto manager = std::make_unique<Manager::SectionManager>();
+    auto model = std::make_unique<GUI::SectionTableModel>(manager.get());
 
-    return a.exec();
+    GUI::MainWindow window(model.get());
+    window.show();
+
+    return app.exec();
 }

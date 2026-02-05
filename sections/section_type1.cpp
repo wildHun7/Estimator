@@ -2,26 +2,28 @@
 
 namespace Sections
 {
-    SectionType1::SectionType1(const std::string& name) : Section(name)
+    SectionType1::SectionType1(const std::string_view name) : Section(name)
     {
-
+        // intentionally empty
     }
 
     void SectionType1::addItem(std::unique_ptr<Items::Item> item, int quantity)
     {
-        if(dynamic_cast<Items::ItemType1*>(item.get()))
-        {
-            std::string item_name = item->getName();
+        auto* raw_ptr = item.get();
+        if(!dynamic_cast<Items::Item*>(raw_ptr))
+            throw std::invalid_argument("Invalid item type");
+        if (quantity < 1)
+            throw std::invalid_argument("Quantity must be positive");
 
-            if(m_section_items.find(item_name) != m_section_items.end())
-                throw std::invalid_argument("Item with the same name already exist");
+        std::string item_name(raw_ptr->getName());
 
-            if (quantity < 1)
-                throw std::invalid_argument("Quantity must be positive");
+        auto [it, inserted] = m_section_items.try_emplace(
+            std::move(item_name),  // key
+            std::move(item),       // item unique ptr
+            quantity
+        );
 
-            m_section_items.emplace(item_name, std::make_pair(std::move(item), quantity));
-        }
-        else
-            throw std::invalid_argument("Invalid item type for SectionType1");
+        if(!inserted)
+            throw std::invalid_argument("Item with the same name already exists");
     }
 }

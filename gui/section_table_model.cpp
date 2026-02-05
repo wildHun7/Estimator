@@ -8,7 +8,7 @@ namespace GUI
 
     }
 
-    Manager::SectionManager* SectionTableModel::getManager() const
+    Manager::SectionManager* SectionTableModel::getManager() const noexcept
     {
         return m_manager;
     }
@@ -56,34 +56,32 @@ namespace GUI
         int row = index.row();
         int column = index.column();
 
-        auto [sectionIndex, itemIndex] = indexOfSectionOrItem(row);
-        const auto& section = m_manager->getSections()[sectionIndex];
+        auto [section_index, item_index] = indexOfSectionOrItem(row);
+        const auto& section = m_manager->getSections()[section_index];
 
-        if(itemIndex == -1) // Section row
+        // Section row
+        if(item_index == -1)
         {
             if(column == 0)
-                return QString::fromStdString(section->getName());
+                return QString::fromStdString(std::string(section->getName()));
             return QVariant();
         }
-        else // Item row
+
+        // Item row
+        const auto& items_map = section->getItems();
+        auto it = std::next(items_map.begin(), item_index);
+        const auto& [item_ptr, quantity] = it->second;
+
+        if(item_ptr)
+        {
+            switch(column)
             {
-            const auto& itemsMap = section->getItems();
-            auto it = std::next(itemsMap.begin(), itemIndex);
-            const auto& itemPtr = it->second.first;
-            int quantity = it->second.second;
-
-            if(itemPtr){
-                const auto& item = *itemPtr;
-
-                switch(column) {
-                case 0: return QString::fromStdString(item.getName());
-                case 1: return quantity;
-                case 2: return item.calcCosts();
-                case 3: return item.calcCosts() * quantity;
-                }
+            case 0: return QString::fromStdString(std::string(item_ptr->getName()));
+            case 1: return quantity;
+            case 2: return item_ptr->calcCosts();
+            case 3: return item_ptr->calcCosts() * quantity;
             }
         }
-
         return QVariant();
     }
 
@@ -115,13 +113,15 @@ namespace GUI
 
         for(size_t section_index = 0; section_index < m_manager->getSections().size(); ++section_index)
         {
+            // Check if this row is the section header
             if(current_row == row)
                 return {static_cast<int>(section_index), -1};
 
             current_row++;
 
+            // Check items in this section
             int item_index = 0;
-            for(const auto& [itemPtr, itemData]: m_manager->getSections()[section_index]->getItems())
+            for(const auto& [item_ptr, item_data]: m_manager->getSections()[section_index]->getItems())
             {
                 if(current_row == row)
                     return {static_cast<int>(section_index), item_index};

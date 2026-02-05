@@ -1,5 +1,5 @@
 #include "section_type2.h"
-
+/*
 namespace Sections
 {
     SectionType2::SectionType2(const std::string& name) : Section(name)
@@ -25,3 +25,4 @@ namespace Sections
             throw std::invalid_argument("Invalid item type for SectionType2");
     }
 }
+*/

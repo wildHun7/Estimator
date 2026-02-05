@@ -11,18 +11,18 @@ namespace Manager
         SectionManager() = default;
         ~SectionManager() = default;
 
-        const std::vector<std::unique_ptr<Sections::Section>>& getSections() const;
+        const std::vector<std::unique_ptr<Sections::Section>>& getSections() const noexcept;
 
         // Managing sections
         void addSection(std::unique_ptr<Sections::Section> section);
-        void removeSection(const std::string& name);
-        int calculateTotalCosts() const;
+        bool removeSection(std::string_view name);
+        std::optional<int> calculateTotalCosts() const noexcept;
 
         // Helper functions
 
-        Sections::Section* findSection(const std::string& name);
-        void addItemToSection(const std::string& name, std::unique_ptr<Items::Item> item);
-        void removeItemFromSection(const std::string& sectionName, const std::string& itemName);
+        Sections::Section* findSection(std::string_view name) const;
+        bool addItemToSection(std::string_view section_name, std::unique_ptr<Items::Item> item);
+        bool removeItemFromSection(std::string_view section_name, std::string_view item_name);
 
     private:
         std::vector<std::unique_ptr<Sections::Section>> m_section_list;

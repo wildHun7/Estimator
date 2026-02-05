@@ -8,9 +8,9 @@ namespace Items
     class ItemType1 : public Item
     {
     public:
-        ItemType1(const std::string& name, int lCost);
+        ItemType1(const std::string_view name, int lCost);
 
-        virtual int calcCosts() const override;
+        int calcCosts() const override;
 
     private:
         int m_labor_cost;

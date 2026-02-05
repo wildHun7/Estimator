@@ -58,7 +58,7 @@ namespace Database
         QSqlQuery query;
 
         query.prepare("INSERT OR IGNORE INTO sections (name) VALUES (:name)");
-        query.bindValue(":name", QString::fromStdString(section.getName()));
+        query.bindValue(":name", QString::fromStdString(std::string(section.getName())));
 
         return query.exec();
     }

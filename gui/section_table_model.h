@@ -16,8 +16,9 @@ namespace GUI
     public:
         SectionTableModel(Manager::SectionManager* manager, QObject* parent = nullptr);
 
-        Manager::SectionManager* getManager() const;
+        Manager::SectionManager* getManager() const noexcept;
 
+        // QAbstractTableModel interface
         int rowCount(const QModelIndex& parent = QModelIndex()) const override;
         int columnCount(const QModelIndex& parent = QModelIndex()) const override;
         QVariant headerData(int section, Qt::Orientation orientation, int role) const override;

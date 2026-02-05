@@ -13,6 +13,11 @@ namespace GUI
         ui->tableView->setModel(m_model);
     }
 
+    MainWindow::~MainWindow()
+    {
+        delete ui;
+    }
+
     void MainWindow::on_addSectionButton_clicked()
     {
         bool ok;
@@ -36,8 +41,14 @@ namespace GUI
 
         QStringList section_list;
         for(const auto& section: m_model->getManager()->getSections())
-            section_list << QString::fromStdString(section->getName());
+        {
+            section_list << QString::fromStdString(std::string(section->getName()));
 
+            if (section_list.isEmpty()) {
+                QMessageBox::information(this, "Brak sekcji", "Nie ma żadnych sekcji.");
+                return;
+            }
+        }
         bool ok;
         QString chosen_section = QInputDialog::getItem(this, "Wybierz sekcję", "Sekcja:", section_list, 0, false, &ok);
         if(!ok || chosen_section.isEmpty())
@@ -62,8 +73,13 @@ namespace GUI
 
             auto item = std::make_unique<Items::ItemType1>(item_name.toStdString(), cost);
             auto section = m_model->getManager()->findSection(chosen_section.toStdString());
-            section->addItem(std::move(item), quantity);
-            m_model->refresh();
+            if (section)
+            {
+                section->addItem(std::move(item), quantity);
+                m_model->refresh();
+            } else {
+                QMessageBox::warning(this, "Błąd", "Nie znaleziono sekcji");
+            }
         }   catch(const std::exception& e) {
             QMessageBox::warning(this, "Błąd", QString("Nie udało się dodać itemu:\n") + e.what());
         }
@@ -75,7 +91,7 @@ namespace GUI
 
         QStringList section_list;
         for(const auto& section: m_model->getManager()->getSections())
-            section_list << QString::fromStdString(section->getName());
+            section_list << QString::fromStdString(std::string(section->getName()));
 
         if(section_list.empty())
         {
@@ -90,11 +106,11 @@ namespace GUI
         if(!ok || chosen_section.isEmpty())
             return;
 
-        try {
-            m_model->getManager()->removeSection(chosen_section.toStdString());
+        if (m_model->getManager()->removeSection(chosen_section.toStdString()))
+        {
             m_model->refresh();
-        } catch (std::exception e) {
-            QMessageBox::warning(this, "Błąd", QString("Nie udało się usunąć sekcji:\n") + e.what());
+        } else {
+            QMessageBox::warning(this, "Błąd", "Nie udało się usunąć sekcji");
         }
     }
 
@@ -104,7 +120,7 @@ namespace GUI
 
         QStringList section_list;
         for(const auto& section: m_model->getManager()->getSections())
-            section_list << QString::fromStdString(section->getName());
+            section_list << QString::fromStdString(std::string(section->getName()));
 
         if(section_list.isEmpty())
         {
@@ -135,17 +151,11 @@ namespace GUI
         if(!ok || chosen_item.isEmpty())
             return;
 
-        try {
-            section->removeItem(chosen_item.toStdString());
+        if (section->removeItem(chosen_item.toStdString()))
+        {
             m_model->refresh();
-        } catch (const std::exception e) {
-            QMessageBox::warning(this, "Error", QString("Failed to remove item:\n") + e.what());
+        } else {
+            QMessageBox::warning(this, "Błąd", "Nie udało się usunąć przedmiotu");
         }
     }
-
-    MainWindow::~MainWindow()
-    {
-       delete ui;
-    }
-
 }

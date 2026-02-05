@@ -2,9 +2,11 @@
 
 namespace Items
 {
-    ItemType1::ItemType1(const std::string& name, int l_cost) : m_labor_cost(l_cost)
+    ItemType1::ItemType1(const std::string_view name, int l_cost)
+        : Item(std::string(name))
+        , m_labor_cost(l_cost)
     {
-        m_item_name = name;
+        // intentionally empty
     }
 
     int ItemType1::calcCosts() const

@@ -2,6 +2,7 @@
 #define ITEM_H
 
 #include <string>
+#include <string_view>
 
 namespace Items
 {
@@ -11,14 +12,16 @@ namespace Items
         virtual ~Item() = default;
 
         // Name
-        void setNameItem(std::string& name);
-        std::string getName() const;
+        void setNameItem(std::string_view name);
+        std::string_view getName() const noexcept;
 
         // Calculation
         virtual int calcCosts() const = 0;
 
     protected:
-    std::string m_item_name;
+        Item() = default;
+        explicit Item(std::string name) : m_item_name(std::move(name)) {}
+        std::string m_item_name;
     };
 }
 

@@ -5,6 +5,8 @@
 #include <memory>
 #include <algorithm>
 #include <string>
+#include <string_view>
+#include <optional>
 #include <vector>
 #include <unordered_map>
 
@@ -17,22 +19,22 @@ namespace Sections
     class Section
     {
     public:
-        explicit Section(const std::string& name);
+        explicit Section(std::string_view name);
         virtual ~Section() = default;
 
         // Items Getter
         const std::unordered_map<std::string, std::pair<std::unique_ptr<Items::Item>, int>>& getItems() const;
 
         // Name
-        const std::string& getName() const; // 2nd const preventing from modification of the object
-        void setName(const std::string& name);
+        std::string_view getName() const noexcept; // const preventing from modification of the object
+        void setName(std::string_view name);
 
         // Managing Items
         virtual void addItem(std::unique_ptr<Items::Item> item, int quantity = 1) = 0;
-        void removeItem(const std::string& name);
-        void updateItemCount(const std::string& name, int count);
+        bool removeItem(std::string_view name);
+        bool updateItemCount(std::string_view name, int count);
 
-        virtual int calcTotal() const;
+        std::optional<int> calcTotal() const noexcept;
 
     protected:
         std::string m_section_name;

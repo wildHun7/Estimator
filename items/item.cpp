@@ -2,14 +2,14 @@
 
 namespace Items
 {
-    void Item::setNameItem(std::string& name)
+    void Item::setNameItem(std::string_view name)
     {
-       this->m_item_name = name;
+        m_item_name = name;
     }
 
-    std::string Item::getName() const
+    std::string_view Item::getName() const noexcept
     {
-        return this->m_item_name;
+        return m_item_name;
     }
 }
 
