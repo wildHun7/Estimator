@@ -7,10 +7,7 @@ namespace Items
         m_item_name = name;
     }
 
-    std::string_view Item::getName() const noexcept
-    {
-        return m_item_name;
-    }
+    // getName() -> inline constexpr in .h
 }
 
 

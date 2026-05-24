@@ -13,7 +13,7 @@ namespace Items
 
         // Name
         void setNameItem(std::string_view name);
-        std::string_view getName() const noexcept;
+        constexpr std::string_view getName() const noexcept {return m_item_name;};
 
         // Calculation
         virtual int calcCosts() const = 0;

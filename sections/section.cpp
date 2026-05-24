@@ -7,35 +7,25 @@ namespace Sections
         // empty
     }
 
-    const std::unordered_map<std::string, std::pair<std::unique_ptr<Items::Item>, int>>& Section::getItems() const
-    {
-        return m_section_items;
-    }
+    // getItems() -> inline constexpr in .h
 
     // Name
 
-    std::string_view Section::getName() const noexcept
-    {
-        return m_section_name;
-    }
+    // getName() -> inline constexpr in .h
 
     void Section::setName(const std::string_view name)
     {
         m_section_name = name;
     }
 
-    // Data
+    // Managing Items
 
     bool Section::removeItem(const std::string_view name)
     {
-        auto item = m_section_items.find(std::string(name));
-
-        if(item != m_section_items.end())
-        {
-            m_section_items.erase(item);
-            return true;
-        }
-        return false;
+        return std::erase_if(m_section_items,
+                [name](const auto& pair){
+                    return pair.first == name;
+                }) > 0;
     }
 
     bool Section::updateItemCount(const std::string_view name, int count)
@@ -55,11 +45,19 @@ namespace Sections
         if(m_section_items.empty())
             return std::nullopt;
 
+        namespace rv = std::ranges::views;
+
+        auto costs = m_section_items
+            | rv::values // pairs<ptr, qty>
+            | rv::transform([](const auto& item_pair){
+                const auto& [item_ptr, qty] = item_pair;
+                return item_ptr->calcCosts() * qty;
+            });
+
         int total = 0;
-        for(const auto& [name, item_pair] : m_section_items)
+        for(auto cost: costs)
         {
-            const auto& [item_ptr, quantity] = item_pair;
-            total += item_ptr->calcCosts() * quantity;
+            total += cost;
         }
         return total;
     }

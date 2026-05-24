@@ -22,11 +22,11 @@ namespace Sections
         explicit Section(std::string_view name);
         virtual ~Section() = default;
 
-        // Items Getter
-        const std::unordered_map<std::string, std::pair<std::unique_ptr<Items::Item>, int>>& getItems() const;
+        // Items Getter unordered_map<string, pair<unique_ptr<Items::Item>, int>>
+        constexpr const auto& getItems() const {return m_section_items;}
 
         // Name
-        std::string_view getName() const noexcept; // const preventing from modification of the object
+        constexpr std::string_view getName() const noexcept {return m_section_name;}
         void setName(std::string_view name);
 
         // Managing Items
