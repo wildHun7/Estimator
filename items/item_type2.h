@@ -2,6 +2,7 @@
 #define ITEM_TYPE2_H
 
 #include "item.h"
+#include <string_view>
 
 namespace Items
 {

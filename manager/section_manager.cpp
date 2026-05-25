@@ -1,12 +1,11 @@
 #include "section_manager.h"
-#include <numeric>
+//#include <numeric>
+#include <algorithm>
+#include <ranges>
 
 namespace Manager
 {
-    const std::vector<std::unique_ptr<Sections::Section>>& SectionManager::getSections() const noexcept
-    {
-        return m_section_list;
-    }
+    // getSections() -> inline constexpr in .h
 
     /// Managing sections
 
@@ -20,15 +19,12 @@ namespace Manager
 
     bool SectionManager::removeSection(std::string_view name)
     {
-        auto it = std::remove_if(m_section_list.begin(), m_section_list.end(), [&name]
-                                 (const std::unique_ptr<Sections::Section>& section)
-                                 {return section->getName() == name;} );
-
-        if(it == m_section_list.end())
-            return false;
-
-        m_section_list.erase(it, m_section_list.end());
-        return true;
+        return std::erase_if(m_section_list,
+            [name](const auto& section)
+            {
+               return section->getName() == name;
+            }
+        ) > 0;
     }
 
     std::optional<int> SectionManager::calculateTotalCosts() const noexcept
@@ -36,12 +32,25 @@ namespace Manager
         if(m_section_list.empty())
             return std::nullopt;
 
-        int total = std::accumulate(m_section_list.begin(), m_section_list.end(), 0,
-                    [](int sum, const auto& section)
-                    {
-                        auto cost = section->calcTotal();
-                        return sum + cost.value_or(0);
-                    });
+        namespace rv = std::ranges::views;
+
+        // Pipeline: sections → costs → sum
+        auto costs = m_section_list
+            | rv::transform([](const auto& section){
+                return section->calcTotal();
+            })
+            | rv::filter([](const auto& opt){
+                return opt.has_value();
+            })
+            | rv::transform([](const auto& opt){
+                return *opt;
+            });
+
+        int total = 0;
+        for(auto cost: costs)
+        {
+            total += cost;
+        }
 
         return total;
     }
@@ -50,11 +59,11 @@ namespace Manager
 
     Sections::Section* SectionManager::findSection(std::string_view section_name) const
     {
-        auto item = std::find_if(m_section_list.begin(), m_section_list.end(),
-                    [section_name](const auto& section)
-                    {
-                        return section->getName() == section_name;
-                    });
+        auto item = std::ranges::find_if(m_section_list,
+            [section_name](const auto& section)
+            {
+                return section->getName() == section_name;
+            });
 
         if(item == m_section_list.end())
             return nullptr;

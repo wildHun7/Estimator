@@ -2,6 +2,8 @@
 #define SECTION_TYPE2_H
 
 #include "section.h"
+#include <memory>
+#include <string>
 
 namespace Sections
 {

@@ -1,4 +1,5 @@
 #include "section.h"
+#include <ranges>
 
 namespace Sections
 {
@@ -48,7 +49,7 @@ namespace Sections
         namespace rv = std::ranges::views;
 
         auto costs = m_section_items
-            | rv::values // pairs<ptr, qty>
+            | rv::values // pair<item ptr, qty>
             | rv::transform([](const auto& item_pair){
                 const auto& [item_ptr, qty] = item_pair;
                 return item_ptr->calcCosts() * qty;
