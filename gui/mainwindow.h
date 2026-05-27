@@ -33,6 +33,8 @@ namespace GUI
         void on_addItemButton_clicked();
         void on_removeSectionButton_clicked();
         void on_removeItemButton_clicked();
+        void on_actionSave_triggered(); // ← NOWE (zamiast buttonów)
+        void on_actionLoad_triggered();
     };
 
 } //namespace GUI

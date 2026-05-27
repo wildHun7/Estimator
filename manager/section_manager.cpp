@@ -2,9 +2,15 @@
 //#include <numeric>
 #include <algorithm>
 #include <ranges>
+#include <QMessageBox>
 
 namespace Manager
 {
+    SectionManager::SectionManager(Database::DatabaseHandler* db) : m_db(db)
+    {
+        // intentionally empty
+    }
+
     // getSections() -> inline constexpr in .h
 
     /// Managing sections
@@ -55,7 +61,7 @@ namespace Manager
         return total;
     }
 
-    /// Helper functions
+    /// Managing items
 
     Sections::Section* SectionManager::findSection(std::string_view section_name) const
     {
@@ -91,6 +97,65 @@ namespace Manager
             return false;
 
         return section->removeItem(item_name);
+    }
+
+    // Database
+
+    bool SectionManager::saveToDatabase()
+    {
+        if (!m_db) return false;
+
+        if (!m_db->beginTransaction()) return false;
+
+        if (!m_db->clearAllData()) {
+            m_db->rollbackTransaction();
+            return false;
+        }
+
+        bool success = std::ranges::all_of(m_section_list, [this](const auto& section){
+
+            if (!m_db->saveSections(*section))
+                return false;
+
+            std::string section_name_str(section->getName());
+
+            for (const auto& [item_name, item_pair] : section->getItems())
+            {
+                const auto& [item_ptr, quantity] = item_pair;
+
+                if (!m_db->saveItem(
+                        section_name_str,
+                        item_name,
+                        item_ptr->calcCosts(),
+                        quantity))
+                {
+                    return false;
+                }
+            }
+            return true;
+        });
+
+        if (success) {
+            return m_db->commitTransaction();
+        } else {
+            m_db->rollbackTransaction();
+            return false;
+        }
+    }
+
+    bool SectionManager::loadFromDatabase()
+    {
+        if(!m_db)
+            return false;
+
+        auto loaded_sections = m_db->loadSections();
+
+        if(loaded_sections.empty())
+            return false;
+
+        m_section_list = std::move(loaded_sections);
+
+        return true;
     }
 }
 

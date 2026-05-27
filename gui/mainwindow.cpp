@@ -21,7 +21,7 @@ namespace GUI
     void MainWindow::on_addSectionButton_clicked()
     {
         bool ok;
-        QString name = QInputDialog::getText(this, "Dodaj sekcję", "Nazwa sekcji:", QLineEdit::Normal, "", &ok);
+        QString name = QInputDialog::getText(this, "Add section", "Section name:", QLineEdit::Normal, "", &ok);
 
         if(ok && !name.trimmed().isEmpty())
         {
@@ -30,7 +30,7 @@ namespace GUI
                 m_model->getManager()->addSection(std::move(section));
                 m_model->refresh();
             } catch (std::exception& e) {
-                QMessageBox::warning(this, "Błąd", QString("Nie udało się dodać sekcji:\n") + e.what());
+                QMessageBox::warning(this, "Error", QString("Failed to add the section:\n") + e.what());
             }
         }
     }
@@ -45,22 +45,22 @@ namespace GUI
             section_list << QString::fromStdString(std::string(section->getName()));
 
             if (section_list.isEmpty()) {
-                QMessageBox::information(this, "Brak sekcji", "Nie ma żadnych sekcji.");
+                QMessageBox::information(this, "No section", "There are no sections available.");
                 return;
             }
         }
         bool ok;
-        QString chosen_section = QInputDialog::getItem(this, "Wybierz sekcję", "Sekcja:", section_list, 0, false, &ok);
+        QString chosen_section = QInputDialog::getItem(this, "Select Section", "Section:", section_list, 0, false, &ok);
         if(!ok || chosen_section.isEmpty())
             return;
 
         // 2. Get item data
 
-        QString item_name = QInputDialog::getText(this, "Dodaj przedmiot", "Nazwa:", QLineEdit::Normal, "", &ok);
+        QString item_name = QInputDialog::getText(this, "Add Item", "Name:", QLineEdit::Normal, "", &ok);
         if (!ok || item_name.trimmed().isEmpty())
             return;
 
-        int quantity = QInputDialog::getInt(this, "Dodaj przedmiot", "Ilość:", 1, 1, 1000, 1, &ok);
+        int quantity = QInputDialog::getInt(this, "Add Item", "Quantity:", 1, 1, 1000, 1, &ok);
         if (!ok)
             return;
 
@@ -78,10 +78,10 @@ namespace GUI
                 section->addItem(std::move(item), quantity);
                 m_model->refresh();
             } else {
-                QMessageBox::warning(this, "Błąd", "Nie znaleziono sekcji");
+                QMessageBox::warning(this, "Error", "Section not found.");
             }
         }   catch(const std::exception& e) {
-            QMessageBox::warning(this, "Błąd", QString("Nie udało się dodać itemu:\n") + e.what());
+            QMessageBox::warning(this, "Error", QString("Failed to add the item:\n") + e.what());
         }
     }
 
@@ -95,14 +95,14 @@ namespace GUI
 
         if(section_list.empty())
         {
-            QMessageBox::information(this, "Brak sekcji", "Nie ma żadnych sekcji do usunięcia.");
+            QMessageBox::information(this, "No Sections", "There are no sections to remove.");
             return;
         }
 
         // 2. Select section for removal
 
         bool ok;
-        QString chosen_section = QInputDialog::getItem(this, "Usuń sekcję", "Wybierz sekcję do usunięcia:", section_list, 0, false, &ok);
+        QString chosen_section = QInputDialog::getItem(this, "Remove Section", "Select a section to remove:", section_list, 0, false, &ok);
         if(!ok || chosen_section.isEmpty())
             return;
 
@@ -110,7 +110,7 @@ namespace GUI
         {
             m_model->refresh();
         } else {
-            QMessageBox::warning(this, "Błąd", "Nie udało się usunąć sekcji");
+            QMessageBox::warning(this, "Error", "Failed to remove the section");
         }
     }
 
@@ -155,7 +155,26 @@ namespace GUI
         {
             m_model->refresh();
         } else {
-            QMessageBox::warning(this, "Błąd", "Nie udało się usunąć przedmiotu");
+            QMessageBox::warning(this, "Error", "Failed to remove the item.");
+        }
+    }
+
+    void MainWindow::on_actionSave_triggered()
+    {
+        if (m_model->getManager()->saveToDatabase()) {
+            QMessageBox::information(this, "Saved", "Data saved successfully");
+        } else {
+            QMessageBox::warning(this, "Error", "Failed to save data!");
+        }
+    }
+
+    void MainWindow::on_actionLoad_triggered()
+    {
+        if (m_model->getManager()->loadFromDatabase()) {
+            m_model->refresh();  // Odśwież widok!
+            QMessageBox::information(this, "Loaded", "Data loaded successfully!");
+        } else {
+            QMessageBox::warning(this, "Error", "Failed to load data!");
         }
     }
 }

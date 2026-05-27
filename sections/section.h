@@ -1,14 +1,12 @@
 #ifndef SECTION_H
 #define SECTION_H
 
-#include <iostream>
+//#include <iostream>
 #include <memory>
 #include <optional>
-//#include <algorithm>
 #include <string>
 #include <string_view>
 #include <unordered_map>
-//#include <vector>
 
 #include "item.h"
 #include "item_type1.h"

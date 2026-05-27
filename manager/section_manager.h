@@ -2,6 +2,7 @@
 #define SECTION_MANAGER_H
 
 #include "section.h"
+#include "database_handler.h"
 #include <memory>
 #include <optional>
 #include <vector>
@@ -12,10 +13,10 @@ namespace Manager
     class SectionManager
     {
     public:
-        SectionManager() = default;
+        explicit SectionManager(Database::DatabaseHandler* db = nullptr);
         ~SectionManager() = default;
 
-        // C++20: constexpr getter vector<unique_ptr<Sections::Section>>
+        // vector<unique_ptr<Sections::Section>>
         constexpr const auto& getSections() const noexcept {return m_section_list;}
 
         // Managing sections
@@ -23,13 +24,18 @@ namespace Manager
         bool removeSection(std::string_view name);
         std::optional<int> calculateTotalCosts() const noexcept;
 
-        // Helper functions
+        // Managing items
         Sections::Section* findSection(std::string_view name) const;
         bool addItemToSection(std::string_view section_name, std::unique_ptr<Items::Item> item);
         bool removeItemFromSection(std::string_view section_name, std::string_view item_name);
 
+        // Database
+        bool saveToDatabase();
+        bool loadFromDatabase();
+
     private:
         std::vector<std::unique_ptr<Sections::Section>> m_section_list;
+        Database::DatabaseHandler* m_db;  // non-owning pointer
     };
 }
 #endif // SECTION_MANAGER_H

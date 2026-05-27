@@ -1,4 +1,6 @@
 #include "database_handler.h"
+#include <QDebug>
+#include <QSqlError>
 
 namespace Database
 {
@@ -21,6 +23,12 @@ namespace Database
             qWarning() << "Failed to open database" << m_db.lastError().text();
             return false;
         }
+
+        QSqlQuery query(m_db);
+        if (!query.exec("PRAGMA foreign_keys = ON;")) {
+            qWarning() << "Failed to enable foreign keys:" << query.lastError().text();
+        }
+
         return true;
     }
 
@@ -138,5 +146,50 @@ namespace Database
         query.bindValue(":section", QString::fromStdString(section_name));
         query.bindValue(":item", QString::fromStdString(item_name));
         return query.exec();
+    }
+
+    bool DatabaseHandler::clearAllData()
+    {
+        // 1. Wymuszamy wyczyszczenie tabeli items
+        QSqlQuery queryItems(m_db);
+        if (!queryItems.exec("DELETE FROM items")) {
+            qWarning() << "LOG: Failed to delete items:" << queryItems.lastError().text();
+            return false;
+        }
+        queryItems.clear(); // Zwalniamy zasoby zapytania natychmiast!
+
+        // 2. Wymuszamy wyczyszczenie tabeli sections
+        QSqlQuery querySections(m_db);
+        if (!querySections.exec("DELETE FROM sections")) {
+            qWarning() << "LOG: Failed to delete sections:" << querySections.lastError().text();
+            return false;
+        }
+        querySections.clear(); // Zwalniamy zasoby
+
+        qDebug() << "LOG: Tables cleared successfully!";
+        return true;
+    }
+
+    bool DatabaseHandler::beginTransaction()
+    {
+        bool ok = m_db.transaction();
+        if (!ok) {
+            qWarning() << "CRITICAL: Failed to begin transaction!" << m_db.lastError().text();
+        }
+        return ok;
+    }
+
+    bool DatabaseHandler::commitTransaction()
+    {
+        bool ok = m_db.commit();
+        if (!ok) {
+            qWarning() << "CRITICAL: Failed to commit transaction!" << m_db.lastError().text();
+        }
+        return ok;
+    }
+
+    void DatabaseHandler::rollbackTransaction()
+    {
+        m_db.rollback();
     }
 }

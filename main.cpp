@@ -1,19 +1,20 @@
+#include "section_manager.h"
 #include "mainwindow.h"
+#include "section_table_model.h"
+#include "database_handler.h"
 #include <QApplication>
-
-/*
-#include "item.h"
-#include "item_type1.h"
-#include "item_type2.h"
-#include "section.h"
-#include "section_type1.h"
-#include "section_type2.h"
-*/
+#include <memory>
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    auto manager = std::make_unique<Manager::SectionManager>();
+    auto db = std::make_unique<Database::DatabaseHandler>("estimator.db");
+
+    if (!db->open() || !db->init()) {
+        qWarning() << "Failed to initialize database!";
+    }
+
+    auto manager = std::make_unique<Manager::SectionManager>(db.get());
     auto model = std::make_unique<GUI::SectionTableModel>(manager.get());
 
     GUI::MainWindow window(model.get());
