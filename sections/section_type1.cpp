@@ -1,7 +1,6 @@
 //#include <format>
 #include "section_type1.h"
 
-
 namespace Sections
 {
     SectionType1::SectionType1(const std::string_view name) : Section(name)
@@ -26,6 +25,6 @@ namespace Sections
         );
 
         if(!inserted)
-            throw std::invalid_argument("Item with the same name already exists");
+            throw std::invalid_argument("Item with the same name already exists"); // add std::format here!
     }
 }
